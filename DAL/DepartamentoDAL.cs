@@ -32,7 +32,16 @@ namespace AdminEmpleados.DAL
 
         public List<DepartamentoBLL> CargarDataGridView()
         {
-            return conexion.ejecutarComandoConRetornoDatos("SELECT id,departamento FROM Departamentos");
+            List<DepartamentoBLL> ListaDepartamentos = new List<DepartamentoBLL>();
+            SqlDataReader lector = conexion.ejecutarComandoConRetornoDatos("SELECT id,departamento FROM Departamentos");
+            while (lector.Read())
+            {
+                DepartamentoBLL oDepartamentoBLL = new DepartamentoBLL();
+                oDepartamentoBLL.ID = System.Convert.ToInt32(lector[0]);
+                oDepartamentoBLL.Departamento = lector[1].ToString();
+                ListaDepartamentos.Add(oDepartamentoBLL);
+            }
+            return ListaDepartamentos;
         }
 
     }

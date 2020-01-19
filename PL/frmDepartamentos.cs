@@ -46,9 +46,9 @@ namespace AdminEmpleados.PL
                 dgvDepartamentos.DataSource = null;
                 if (oDepartamentosDAL.Agregar(oDepartamentoBLL))
                 {
-                    if (dgvDepartamentos.Rows.Count == 1)
-                        actualizarBotones(true, true);
                     dgvDepartamentos.DataSource = oDepartamentoDAL.CargarDataGridView();
+                    if (dgvDepartamentos.Rows.Count > 0)
+                        actualizarBotones(true, true);
                     MessageBox.Show("El registro se agregó correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -104,7 +104,7 @@ namespace AdminEmpleados.PL
             {
                 columna.Width = 221;
             }            
-            if (dgvDepartamentos.Rows.Count > 1)
+            if (dgvDepartamentos.Rows.Count > 0)
                 actualizarBotones(true, true);
         }
 
@@ -119,17 +119,19 @@ namespace AdminEmpleados.PL
             DepartamentoDAL oDepartamentoDAL = new DepartamentoDAL();
             if (dgvDepartamentos.SelectedRows.Count > 0)
             {
-                dgvDepartamentos.DataSource = null;
-                for (int i = 0; i < dgvDepartamentos.SelectedRows.Count - 1; i++) {
+                for (int i = 0; i <= dgvDepartamentos.SelectedRows.Count - 1; i++) {
                     
                     oDepartamentoDAL.Borrar(System.Convert.ToInt32(dgvDepartamentos.Rows[dgvDepartamentos.SelectedRows[i].Index].Cells[0].Value));
                 } 
                 dgvDepartamentos.DataSource = oDepartamentoDAL.CargarDataGridView();
+                if (dgvDepartamentos.Rows.Count == 0)
+                    actualizarBotones(false, false);
                 MessageBox.Show("Los registros fueron eliminados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else {
                 MessageBox.Show("ERROR\nNo hay registro seleccionado para ser eliminado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

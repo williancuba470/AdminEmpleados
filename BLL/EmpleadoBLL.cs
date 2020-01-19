@@ -13,7 +13,7 @@ namespace AdminEmpleados.BLL
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public string Correo { get; set; }
-        public int Departamento { get; set; }
+        public string Departamento { get; set; }
         public byte[] fotoEmpleado { get; set; }
 
     }

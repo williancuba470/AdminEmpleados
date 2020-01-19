@@ -44,9 +44,16 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Foto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picfoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +73,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 1;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
             // 
             // txtNombre
             // 
@@ -141,12 +149,12 @@
             // 
             // picfoto
             // 
+            this.picfoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picfoto.Location = new System.Drawing.Point(27, 33);
             this.picfoto.Name = "picfoto";
             this.picfoto.Size = new System.Drawing.Size(151, 147);
             this.picfoto.TabIndex = 11;
             this.picfoto.TabStop = false;
-            this.picfoto.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnExaminar
             // 
@@ -156,6 +164,7 @@
             this.btnExaminar.TabIndex = 12;
             this.btnExaminar.Text = "Examinar...";
             this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
             // 
             // btnAgregar
             // 
@@ -165,6 +174,7 @@
             this.btnAgregar.TabIndex = 13;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -184,22 +194,22 @@
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(478, 195);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 16;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
             // dgvEmpleados
             // 
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Nombres,
+            this.PrimerApellido,
+            this.SegundoApellido,
+            this.Correo,
+            this.Foto,
+            this.Departamento});
             this.dgvEmpleados.Location = new System.Drawing.Point(27, 236);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.Size = new System.Drawing.Size(658, 162);
             this.dgvEmpleados.TabIndex = 17;
+            this.dgvEmpleados.SelectionChanged += new System.EventHandler(this.dgvEmpleados_SelectionChanged);
             // 
             // label6
             // 
@@ -210,6 +220,66 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Nombre:";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "id";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 75;
+            // 
+            // Nombres
+            // 
+            this.Nombres.DataPropertyName = "nombres";
+            this.Nombres.HeaderText = "Nombres";
+            this.Nombres.Name = "Nombres";
+            this.Nombres.ReadOnly = true;
+            this.Nombres.Width = 90;
+            // 
+            // PrimerApellido
+            // 
+            this.PrimerApellido.DataPropertyName = "primerapellido";
+            this.PrimerApellido.HeaderText = "Primer apellido";
+            this.PrimerApellido.Name = "PrimerApellido";
+            this.PrimerApellido.ReadOnly = true;
+            this.PrimerApellido.Width = 90;
+            // 
+            // SegundoApellido
+            // 
+            this.SegundoApellido.DataPropertyName = "segundoapellido";
+            this.SegundoApellido.HeaderText = "Segundo apellido";
+            this.SegundoApellido.Name = "SegundoApellido";
+            this.SegundoApellido.ReadOnly = true;
+            this.SegundoApellido.Width = 90;
+            // 
+            // Correo
+            // 
+            this.Correo.DataPropertyName = "correo";
+            this.Correo.HeaderText = "Correo";
+            this.Correo.Name = "Correo";
+            this.Correo.ReadOnly = true;
+            this.Correo.Width = 90;
+            // 
+            // Foto
+            // 
+            this.Foto.DataPropertyName = "foto";
+            this.Foto.HeaderText = "Foto";
+            this.Foto.Name = "Foto";
+            this.Foto.ReadOnly = true;
+            this.Foto.Width = 90;
+            // 
+            // Departamento
+            // 
+            this.Departamento.DataPropertyName = "departamento";
+            this.Departamento.HeaderText = "Departamento";
+            this.Departamento.Name = "Departamento";
+            this.Departamento.ReadOnly = true;
+            this.Departamento.Width = 90;
+            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,7 +287,6 @@
             this.ClientSize = new System.Drawing.Size(715, 420);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvEmpleados);
-            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
@@ -261,8 +330,15 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnBorrar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrimerApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SegundoApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Foto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
     }
 }

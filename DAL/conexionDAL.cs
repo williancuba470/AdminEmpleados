@@ -33,29 +33,20 @@ namespace AdminEmpleados.DAL
                 conexion.Close();
                 return true;
             }
-            catch
+            catch 
             {
                 return false;
             }
         }
 
         /*SELECT para retorno de datos*/
-        public List<DepartamentoBLL> ejecutarComandoConRetornoDatos(string strComando) {
-            List<DepartamentoBLL> ListaDepartamentos = new List<DepartamentoBLL>();
+        public SqlDataReader ejecutarComandoConRetornoDatos(string strComando) {
             SqlCommand comando = new SqlCommand();
             comando.CommandText = strComando;
             comando.Connection = this.EstablecerConexion();
             conexion.Open();
             SqlDataReader lector = comando.ExecuteReader();
-            while (lector.Read())
-            {
-                DepartamentoBLL oDepartamentoBLL = new DepartamentoBLL();
-                oDepartamentoBLL.ID = System.Convert.ToInt32(lector[0]);
-                oDepartamentoBLL.Departamento = lector[1].ToString();
-                ListaDepartamentos.Add(oDepartamentoBLL);
-            }
-            conexion.Close();
-            return ListaDepartamentos;
+            return lector;
         }
             
     }    
