@@ -1,0 +1,1 @@
+﻿Capa para la lógica del negocio

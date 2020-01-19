@@ -1,0 +1,11 @@
+C:\Users\William\source\repos\AdminEmpleados\bin\Debug\AdminEmpleados.exe.config
+C:\Users\William\source\repos\AdminEmpleados\bin\Debug\AdminEmpleados.exe
+C:\Users\William\source\repos\AdminEmpleados\bin\Debug\AdminEmpleados.pdb
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.csprojAssemblyReference.cache
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.Form1.resources
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.PL.frmDepartamentos.resources
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.PL.frmEmpleados.resources
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.Properties.Resources.resources
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.csproj.GenerateResource.cache
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.exe
+C:\Users\William\source\repos\AdminEmpleados\obj\Debug\AdminEmpleados.pdb
