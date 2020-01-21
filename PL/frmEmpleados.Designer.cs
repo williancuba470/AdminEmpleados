@@ -48,7 +48,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombres1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,7 +199,7 @@
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.Nombres,
+            this.Nombres1,
             this.PrimerApellido,
             this.SegundoApellido,
             this.Correo,
@@ -230,15 +230,15 @@
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 75;
+            this.ID.Width = 88;
             // 
-            // Nombres
+            // Nombres1
             // 
-            this.Nombres.DataPropertyName = "nombres";
-            this.Nombres.HeaderText = "Nombres";
-            this.Nombres.Name = "Nombres";
-            this.Nombres.ReadOnly = true;
-            this.Nombres.Width = 90;
+            this.Nombres1.DataPropertyName = "nombres";
+            this.Nombres1.HeaderText = "Nombres";
+            this.Nombres1.Name = "Nombres1";
+            this.Nombres1.ReadOnly = true;
+            this.Nombres1.Width = 88;
             // 
             // PrimerApellido
             // 
@@ -246,7 +246,7 @@
             this.PrimerApellido.HeaderText = "Primer apellido";
             this.PrimerApellido.Name = "PrimerApellido";
             this.PrimerApellido.ReadOnly = true;
-            this.PrimerApellido.Width = 90;
+            this.PrimerApellido.Width = 88;
             // 
             // SegundoApellido
             // 
@@ -254,7 +254,7 @@
             this.SegundoApellido.HeaderText = "Segundo apellido";
             this.SegundoApellido.Name = "SegundoApellido";
             this.SegundoApellido.ReadOnly = true;
-            this.SegundoApellido.Width = 90;
+            this.SegundoApellido.Width = 88;
             // 
             // Correo
             // 
@@ -262,7 +262,7 @@
             this.Correo.HeaderText = "Correo";
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;
-            this.Correo.Width = 90;
+            this.Correo.Width = 88;
             // 
             // Foto
             // 
@@ -270,7 +270,7 @@
             this.Foto.HeaderText = "Foto";
             this.Foto.Name = "Foto";
             this.Foto.ReadOnly = true;
-            this.Foto.Width = 90;
+            this.Foto.Width = 88;
             // 
             // Departamento
             // 
@@ -278,7 +278,7 @@
             this.Departamento.HeaderText = "Departamento";
             this.Departamento.Name = "Departamento";
             this.Departamento.ReadOnly = true;
-            this.Departamento.Width = 90;
+            this.Departamento.Width = 88;
             // 
             // frmEmpleados
             // 
@@ -305,6 +305,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmEmpleados";
             this.Text = "Empleados";
+            this.Load += new System.EventHandler(this.frmEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picfoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
             this.ResumeLayout(false);
@@ -334,7 +335,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimerApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn SegundoApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;

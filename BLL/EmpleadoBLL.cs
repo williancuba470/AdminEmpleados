@@ -9,12 +9,12 @@ namespace AdminEmpleados.BLL
     class EmpleadoBLL
     {
         public int ID { get; set; }
-        public string NombreEmpleado { get; set; }
+        public string Nombres { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public string Correo { get; set; }
         public string Departamento { get; set; }
-        public byte[] fotoEmpleado { get; set; }
+        public byte[] Foto { get; set; }
 
     }
 }

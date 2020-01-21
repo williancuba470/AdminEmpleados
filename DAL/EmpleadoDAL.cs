@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using AdminEmpleados.BLL;
+using System.Windows.Forms;
 
 namespace AdminEmpleados.DAL
 {
@@ -20,7 +21,7 @@ namespace AdminEmpleados.DAL
         }
         
         public bool Agregar(EmpleadoBLL oEmpleadoBLL) {
-            return conexion.ejecutarComandoSinRetornoDatos("INSERT INTO Empleados (id, nombres, primerapellido, segundoapellido, correo, foto, departamento) VALUES ('"+oEmpleadoBLL.ID+"', '"+ oEmpleadoBLL.NombreEmpleado+ "', '"+ oEmpleadoBLL.PrimerApellido+ "', '"+ oEmpleadoBLL.SegundoApellido+ "', '"+ oEmpleadoBLL.Correo+ "', '"+ oEmpleadoBLL.fotoEmpleado+"','"+oEmpleadoBLL.Departamento+"')");
+            return conexion.ejecutarComandoSinRetornoDatos("INSERT INTO Empleados (id, nombres, primerapellido, segundoapellido, correo, foto, departamento) VALUES ('"+oEmpleadoBLL.ID+"', '"+ oEmpleadoBLL.Nombres+ "', '"+ oEmpleadoBLL.PrimerApellido+ "', '"+ oEmpleadoBLL.SegundoApellido+ "', '"+ oEmpleadoBLL.Correo+ "', '"+ oEmpleadoBLL.Foto+"','"+oEmpleadoBLL.Departamento+"')");
         }
         /*
         public bool Modificar(DepartamentoBLL oDepartamentosBLL, int id) {
@@ -34,16 +35,16 @@ namespace AdminEmpleados.DAL
         public List<EmpleadoBLL> CargarDataGridView()
         {
             List<EmpleadoBLL> ListaEmpleados = new List<EmpleadoBLL>();
-            SqlDataReader lector = conexion.ejecutarComandoConRetornoDatos("SELECT id,nombres, primerapellido,segundoapellido,correo,foto FROM Empleados");
+            SqlDataReader lector = conexion.ejecutarComandoConRetornoDatos("SELECT id,nombres, primerapellido,segundoapellido,correo,foto,departamento FROM Empleados");
             while (lector.Read())
             {
                 EmpleadoBLL oEmpleadoBLL = new EmpleadoBLL();
                 oEmpleadoBLL.ID = System.Convert.ToInt32(lector[0]);
-                oEmpleadoBLL.NombreEmpleado = lector[1].ToString();
+                oEmpleadoBLL.Nombres = lector[1].ToString();
                 oEmpleadoBLL.PrimerApellido = lector[2].ToString();
                 oEmpleadoBLL.SegundoApellido = lector[3].ToString();
                 oEmpleadoBLL.Correo = lector[4].ToString();
-                oEmpleadoBLL.fotoEmpleado = (byte[])lector[5];
+                oEmpleadoBLL.Foto = (byte[])lector[5];
                 oEmpleadoBLL.Departamento = lector[6].ToString();
                 ListaEmpleados.Add(oEmpleadoBLL);
             }

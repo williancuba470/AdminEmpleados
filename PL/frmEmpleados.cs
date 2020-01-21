@@ -34,7 +34,7 @@ namespace AdminEmpleados.PL
             int ID = 0;
             int.TryParse(txtID.Text, out ID);
             oEmpleadoBLL.ID = ID;
-            oEmpleadoBLL.NombreEmpleado = txtNombre.Text;
+            oEmpleadoBLL.Nombres = txtNombre.Text;
             oEmpleadoBLL.PrimerApellido = txtPrimerApellido.Text;
             oEmpleadoBLL.SegundoApellido = txtSegundoApellido.Text;
             oEmpleadoBLL.Correo = txtCorreo.Text;
@@ -45,12 +45,13 @@ namespace AdminEmpleados.PL
                 myStream.CopyTo(ms);
                 file = ms.ToArray();
             }
-            oEmpleadoBLL.fotoEmpleado = file;
+            
+            oEmpleadoBLL.Foto = file;
             return oEmpleadoBLL;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (txtID.Text.Length > 0 && txtNombre.Text.Length > 0 && txtPrimerApellido.Text.Length > 0 && txtSegundoApellido.Text.Length > 0 && txtCorreo.Text.Length > 0 && picfoto.Image != null)
+            if (txtID.Text.Length > 0 && txtNombre.Text.Length > 0 && txtPrimerApellido.Text.Length > 0 && txtSegundoApellido.Text.Length > 0 && txtCorreo.Text.Length > 0 && cbxDepartamento.Text.Length > 0 && picfoto.Image != null)
             {
                 EmpleadoBLL oEmpleadoBLL = new EmpleadoBLL();
                 EmpleadoDAL oEmpleadoDAL = new EmpleadoDAL();
@@ -100,8 +101,22 @@ namespace AdminEmpleados.PL
             txtPrimerApellido.Text = dgvEmpleados.CurrentRow.Cells[2].Value.ToString();
             txtSegundoApellido.Text = dgvEmpleados.CurrentRow.Cells[3].Value.ToString();
             txtCorreo.Text = dgvEmpleados.CurrentRow.Cells[4].Value.ToString();
-            picfoto.ImageLocation = dgvEmpleados.CurrentRow.Cells[5].Value.ToString();
+            picfoto.ImageLocation = ((byte[])(dgvEmpleados.CurrentRow.Cells[5].Value)).ToString();//cargar imagen
             cbxDepartamento.Text = dgvEmpleados.CurrentRow.Cells[6].Value.ToString();
+        }
+
+        private void frmEmpleados_Load(object sender, EventArgs e)
+        {
+            EmpleadoDAL oEmpleadoDAL = new EmpleadoDAL();
+            dgvEmpleados.AutoGenerateColumns = false;
+            dgvEmpleados.DataSource = oEmpleadoDAL.CargarDataGridView();
+            
+            foreach (DataGridViewColumn columna in dgvEmpleados.Columns)
+            {
+                columna.Width = 88;
+            }
+            if (dgvEmpleados.Rows.Count > 0)
+                actualizarBotones(true, true);
         }
     }
 }
